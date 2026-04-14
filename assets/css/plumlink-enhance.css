@@ -1,0 +1,769 @@
+/* ============================================================
+   PLUMLINK UI ENHANCEMENT — Modern Polish, Typography, Conversion
+   Brand Colors: Navy #151D37 | Gold #FFB129 | Red #E30513 | Green #61CE70
+   Font: Poppins
+   ============================================================ */
+
+/* --- CSS Custom Properties (extended brand palette) --- */
+:root {
+  --pl-navy: #151D37 !important;
+  --pl-navy-light: #1e2a4a !important;
+  --pl-navy-dark: #0d1224 !important;
+  --pl-gold: #FFB129 !important;
+  --pl-gold-light: #ffc45c !important;
+  --pl-gold-dark: #e89a10 !important;
+  --pl-red: #E30513 !important;
+  --pl-green: #61CE70 !important;
+  --pl-white: #ffffff !important;
+  --pl-off-white: #f8f9fc !important;
+  --pl-gray-50: #f4f5f7 !important;
+  --pl-gray-100: #e8eaef !important;
+  --pl-gray-200: #d1d5de !important;
+  --pl-gray-300: #9ca3b4 !important;
+  --pl-gray-600: #5a6178 !important;
+  --pl-gray-800: #2d3348 !important;
+  --pl-radius-sm: 8px !important;
+  --pl-radius-md: 14px !important;
+  --pl-radius-lg: 22px !important;
+  --pl-radius-xl: 32px !important;
+  --pl-shadow-sm: 0 2px 8px rgba(21,29,55,0.06) !important;
+  --pl-shadow-md: 0 4px 20px rgba(21,29,55,0.08), 0 1px 3px rgba(21,29,55,0.06) !important;
+  --pl-shadow-lg: 0 8px 40px rgba(21,29,55,0.10), 0 2px 6px rgba(21,29,55,0.05) !important;
+  --pl-shadow-xl: 0 16px 56px rgba(21,29,55,0.14), 0 4px 12px rgba(21,29,55,0.06) !important;
+  --pl-shadow-gold: 0 4px 24px rgba(255,177,41,0.25) !important;
+  --pl-transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  --pl-transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* --- @keyframes --- */
+@keyframes plFadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes plFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes plScaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes plShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes plFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes plPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,177,41,0.3); }
+  50% { box-shadow: 0 0 0 12px rgba(255,177,41,0); }
+}
+@keyframes plGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes plGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255,177,41,0.15); }
+  50% { box-shadow: 0 0 35px rgba(255,177,41,0.3); }
+}
+@keyframes plSlideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes plSlideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* --- Global Reset & Polish --- */
+*, *::before, *::after {
+  box-sizing: border-box !important;
+}
+
+html {
+  scroll-behavior: smooth !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+body {
+  overflow-x: hidden !important;
+  text-rendering: optimizeLegibility !important;
+}
+
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar {
+  width: 10px !important;
+}
+::-webkit-scrollbar-track {
+  background: var(--pl-gray-50) !important;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--pl-navy) 0%, var(--pl-navy-light) 100%) !important;
+  border-radius: 10px !important;
+  border: 2px solid var(--pl-gray-50) !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--pl-gold-dark) 0%, var(--pl-gold) 100%) !important;
+}
+
+/* --- Selection --- */
+::selection {
+  background: var(--pl-gold) !important;
+  color: var(--pl-navy) !important;
+}
+::-moz-selection {
+  background: var(--pl-gold) !important;
+  color: var(--pl-navy) !important;
+}
+
+/* --- Universal Transition --- */
+a, button, .elementor-button, .elementor-widget, img,
+.e-con, .elementor-heading-title, .elementor-icon,
+.elementor-social-icon, .elementor-field-textual,
+.swiper-slide, .elementor-icon-list-item {
+  transition: var(--pl-transition) !important;
+}
+
+/* ============================================================
+   HEADER / NAVIGATION
+   ============================================================ */
+.elementor-location-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+  transition: var(--pl-transition) !important;
+}
+
+/* Top nav bar container */
+.elementor-location-header > .elementor-element-b35186f {
+  background: rgba(255,255,255,0.95) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  box-shadow: 0 1px 0 rgba(21,29,55,0.06) !important;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+  transition: var(--pl-transition) !important;
+}
+
+.elementor-location-header.pl-scrolled > .elementor-element-b35186f {
+  background: rgba(255,255,255,0.97) !important;
+  box-shadow: 0 4px 30px rgba(21,29,55,0.08), 0 1px 3px rgba(21,29,55,0.04) !important;
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+}
+
+/* Logo scaling on scroll */
+.elementor-location-header .elementor-widget-image img {
+  transition: var(--pl-transition) !important;
+  max-height: 60px !important;
+  width: auto !important;
+}
+.elementor-location-header.pl-scrolled .elementor-element-1875acb img {
+  max-height: 46px !important;
+}
+
+/* Nav links */
+.elementor-nav-menu--main .elementor-item {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  letter-spacing: 0.3px !important;
+  color: var(--pl-navy) !important;
+  padding: 10px 18px !important;
+  position: relative !important;
+  text-transform: none !important;
+}
+.elementor-nav-menu--main .elementor-item:hover,
+.elementor-nav-menu--main .elementor-item:focus {
+  color: var(--pl-gold-dark) !important;
+}
+.elementor-nav-menu--main .elementor-item-active {
+  color: var(--pl-gold-dark) !important;
+  font-weight: 600 !important;
+}
+
+/* Underline animation for nav */
+.e--pointer-underline .elementor-item::after {
+  background-color: var(--pl-gold) !important;
+  height: 3px !important;
+  border-radius: 3px !important;
+  bottom: 4px !important;
+}
+
+/* Dropdown menu */
+.elementor-nav-menu--dropdown {
+  background: rgba(255,255,255,0.98) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid var(--pl-gray-100) !important;
+  border-radius: var(--pl-radius-md) !important;
+  box-shadow: var(--pl-shadow-lg) !important;
+  padding: 8px !important;
+  margin-top: 8px !important;
+  overflow: hidden !important;
+}
+.elementor-nav-menu--dropdown .elementor-sub-item {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  padding: 10px 16px !important;
+  border-radius: var(--pl-radius-sm) !important;
+  color: var(--pl-gray-600) !important;
+}
+.elementor-nav-menu--dropdown .elementor-sub-item:hover {
+  background: var(--pl-off-white) !important;
+  color: var(--pl-navy) !important;
+}
+
+/* Sub-bar (free delivery, trade & retail, etc.) */
+.elementor-element-2a6a9c9 {
+  background: var(--pl-navy) !important;
+  border-bottom: 3px solid var(--pl-gold) !important;
+  padding: 16px 0 !important;
+}
+.elementor-element-2a6a9c9 .elementor-heading-title {
+  color: var(--pl-white) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+}
+.elementor-element-2a6a9c9 .elementor-widget-image img {
+  filter: brightness(0) invert(1) !important;
+  opacity: 0.9 !important;
+  max-height: 48px !important;
+}
+.elementor-element-2a6a9c9 .e-con.e-child {
+  padding: 12px 16px !important;
+  border-radius: var(--pl-radius-sm) !important;
+  transition: var(--pl-transition) !important;
+}
+.elementor-element-2a6a9c9 .e-con.e-child:hover {
+  background: rgba(255,255,255,0.06) !important;
+}
+
+/* ============================================================
+   BUTTONS — Refined Gold CTA
+   ============================================================ */
+.elementor-button {
+  background: var(--pl-gold) !important;
+  color: var(--pl-navy) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  padding: 14px 32px !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  letter-spacing: 0.5px !important;
+  text-transform: none !important;
+  box-shadow: 0 2px 12px rgba(255,177,41,0.25), 0 1px 3px rgba(255,177,41,0.15) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+}
+.elementor-button::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent) !important;
+  transition: left 0.5s ease !important;
+}
+.elementor-button:hover {
+  background: var(--pl-gold-dark) !important;
+  color: var(--pl-navy) !important;
+  box-shadow: var(--pl-shadow-gold), 0 6px 20px rgba(255,177,41,0.3) !important;
+  transform: translateY(-2px) !important;
+}
+.elementor-button:hover::before {
+  left: 100% !important;
+}
+.elementor-button:active {
+  transform: translateY(0) scale(0.98) !important;
+}
+
+/* ============================================================
+   HEADINGS & TYPOGRAPHY
+   ============================================================ */
+h1.elementor-heading-title {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 700 !important;
+  color: var(--pl-navy) !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.15 !important;
+}
+h2.elementor-heading-title {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 600 !important;
+  color: var(--pl-navy) !important;
+  letter-spacing: -0.3px !important;
+  line-height: 1.25 !important;
+}
+/* Body text within text-editor widgets */
+.elementor-widget-text-editor p {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 400 !important;
+  line-height: 1.75 !important;
+  color: var(--pl-gray-600) !important;
+  font-size: 15.5px !important;
+  letter-spacing: 0.1px !important;
+}
+
+/* ============================================================
+   HERO SECTIONS (first main content section)
+   ============================================================ */
+.site-main > .page-content > .elementor > .e-con.e-parent:first-child {
+  position: relative !important;
+  overflow: hidden !important;
+}
+.site-main > .page-content > .elementor > .e-con.e-parent:first-child .e-con-inner {
+  position: relative !important;
+  z-index: 2 !important;
+}
+.site-main > .page-content > .elementor > .e-con.e-parent:first-child h1.elementor-heading-title {
+  font-size: clamp(32px, 5vw, 56px) !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+}
+.site-main > .page-content > .elementor > .e-con.e-parent:first-child h2.elementor-heading-title {
+  font-weight: 400 !important;
+  color: var(--pl-gray-600) !important;
+  font-size: clamp(16px, 2vw, 20px) !important;
+  line-height: 1.6 !important;
+  max-width: 600px !important;
+}
+
+/* ============================================================
+   SERVICE CARDS (the hovering icon cards)
+   ============================================================ */
+.e-transform.e-con.e-child[data-settings*="translateY"] {
+  background: var(--pl-white) !important;
+  border-radius: var(--pl-radius-lg) !important;
+  box-shadow: var(--pl-shadow-md) !important;
+  padding: 28px 24px !important;
+  border: 1px solid var(--pl-gray-100) !important;
+  text-decoration: none !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+.e-transform.e-con.e-child[data-settings*="translateY"]::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, var(--pl-gold), var(--pl-gold-light)) !important;
+  transform: scaleX(0) !important;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transform-origin: left !important;
+}
+.e-transform.e-con.e-child[data-settings*="translateY"]:hover {
+  box-shadow: var(--pl-shadow-xl) !important;
+  border-color: transparent !important;
+}
+.e-transform.e-con.e-child[data-settings*="translateY"]:hover::after {
+  transform: scaleX(1) !important;
+}
+.e-transform.e-con.e-child[data-settings*="translateY"] .elementor-heading-title {
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  color: var(--pl-navy) !important;
+}
+.e-transform.e-con.e-child[data-settings*="translateY"] .elementor-widget-text-editor p {
+  font-size: 13.5px !important;
+  color: var(--pl-gray-300) !important;
+  line-height: 1.6 !important;
+}
+.e-transform.e-con.e-child[data-settings*="translateY"] .elementor-widget-image img {
+  max-height: 64px !important;
+  transition: var(--pl-transition) !important;
+}
+.e-transform.e-con.e-child[data-settings*="translateY"]:hover .elementor-widget-image img {
+  transform: scale(1.08) !important;
+}
+
+/* ============================================================
+   IMAGES — Rounded, polished
+   ============================================================ */
+.site-main .elementor-widget-image img {
+  border-radius: var(--pl-radius-md) !important;
+  transition: var(--pl-transition) !important;
+}
+.site-main .elementor-widget-image img:hover {
+  transform: scale(1.02) !important;
+}
+
+/* Full-width images (banners) */
+.elementor-widget__width-initial .elementor-widget-container img {
+  border-radius: var(--pl-radius-lg) !important;
+  box-shadow: var(--pl-shadow-md) !important;
+}
+
+/* ============================================================
+   CONTENT SECTIONS — Better spacing & backgrounds
+   ============================================================ */
+.site-main .e-con.e-parent {
+  padding-top: 60px !important;
+  padding-bottom: 60px !important;
+}
+
+/* Alternating subtle backgrounds */
+.site-main .e-con.e-parent:nth-child(even):not([data-settings*="background_background"]) {
+  background: var(--pl-off-white) !important;
+}
+
+/* Wave divider sections */
+.elementor-shape-bottom svg .elementor-shape-fill {
+  fill: var(--pl-off-white) !important;
+}
+
+/* Sections with navy/dark bg - refine */
+.e-con.e-parent[data-settings*='"background_background":"classic"'] {
+  position: relative !important;
+}
+
+/* "Why Plumlink?" type sections */
+.elementor-element-625fccc,
+.elementor-element-388bdfe {
+  background: var(--pl-off-white) !important;
+  border-radius: 0 !important;
+}
+
+/* ============================================================
+   BRAND CAROUSEL
+   ============================================================ */
+.elementor-widget-image-carousel {
+  padding: 20px 0 !important;
+}
+.swiper-slide-image {
+  border-radius: var(--pl-radius-sm) !important;
+  padding: 12px !important;
+  filter: grayscale(30%) !important;
+  opacity: 0.7 !important;
+  transition: var(--pl-transition) !important;
+}
+.swiper-slide:hover .swiper-slide-image {
+  filter: grayscale(0%) !important;
+  opacity: 1 !important;
+  transform: scale(1.05) !important;
+}
+.elementor-swiper-button {
+  background: var(--pl-white) !important;
+  border-radius: 50% !important;
+  width: 44px !important;
+  height: 44px !important;
+  box-shadow: var(--pl-shadow-sm) !important;
+  color: var(--pl-navy) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: var(--pl-transition) !important;
+}
+.elementor-swiper-button:hover {
+  background: var(--pl-gold) !important;
+  color: var(--pl-navy) !important;
+  box-shadow: var(--pl-shadow-gold) !important;
+}
+.elementor-swiper-button svg {
+  width: 20px !important;
+  height: 20px !important;
+  fill: currentColor !important;
+}
+
+/* ============================================================
+   FORMS — Clean, modern inputs
+   ============================================================ */
+.elementor-field-textual {
+  border: 2px solid var(--pl-gray-100) !important;
+  border-radius: var(--pl-radius-md) !important;
+  padding: 14px 18px !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 14px !important;
+  color: var(--pl-navy) !important;
+  background: var(--pl-white) !important;
+  transition: var(--pl-transition) !important;
+  outline: none !important;
+}
+.elementor-field-textual:focus {
+  border-color: var(--pl-gold) !important;
+  box-shadow: 0 0 0 4px rgba(255,177,41,0.12) !important;
+}
+.elementor-field-textual::placeholder {
+  color: var(--pl-gray-300) !important;
+  font-weight: 400 !important;
+}
+
+/* Contact form - textarea */
+textarea.elementor-field-textual {
+  border-radius: var(--pl-radius-md) !important;
+  min-height: 140px !important;
+  resize: vertical !important;
+}
+
+/* Form labels */
+.elementor-field-label {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  color: var(--pl-navy) !important;
+  letter-spacing: 0.3px !important;
+  margin-bottom: 6px !important;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.elementor-location-footer {
+  position: relative !important;
+}
+.elementor-location-footer > .e-con.e-parent {
+  background: var(--pl-navy) !important;
+  padding-top: 60px !important;
+  padding-bottom: 24px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+.elementor-location-footer > .e-con.e-parent::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 4px !important;
+  background: linear-gradient(90deg, var(--pl-gold-dark), var(--pl-gold), var(--pl-gold-light), var(--pl-gold)) !important;
+}
+
+/* Footer headings */
+.elementor-location-footer .elementor-heading-title {
+  color: var(--pl-white) !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  margin-bottom: 16px !important;
+}
+
+/* Footer links */
+.elementor-location-footer .elementor-icon-list-text {
+  color: var(--pl-gray-200) !important;
+  font-size: 14px !important;
+  transition: var(--pl-transition) !important;
+}
+.elementor-location-footer .elementor-icon-list-item:hover .elementor-icon-list-text {
+  color: var(--pl-gold) !important;
+  padding-left: 4px !important;
+}
+
+/* Footer logo */
+.elementor-location-footer .elementor-element-b36a67e img {
+  max-width: 200px !important;
+  opacity: 0.95 !important;
+}
+
+/* Footer copyright */
+.elementor-location-footer .elementor-element-bebf7aa {
+  border-top: 1px solid rgba(255,255,255,0.08) !important;
+  padding-top: 20px !important;
+  margin-top: 32px !important;
+}
+.elementor-location-footer .elementor-element-bebf7aa .elementor-heading-title,
+.elementor-location-footer .elementor-element-bebf7aa .elementor-heading-title p {
+  font-size: 12.5px !important;
+  color: var(--pl-gray-300) !important;
+  font-weight: 400 !important;
+}
+.elementor-location-footer .elementor-element-bebf7aa a {
+  color: var(--pl-gold) !important;
+  text-decoration: none !important;
+}
+
+/* Footer social icons */
+.elementor-location-footer .elementor-social-icon {
+  background: rgba(255,255,255,0.08) !important;
+  border-radius: 50% !important;
+  width: 42px !important;
+  height: 42px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: var(--pl-transition) !important;
+}
+.elementor-location-footer .elementor-social-icon:hover {
+  background: var(--pl-gold) !important;
+  transform: translateY(-3px) !important;
+}
+.elementor-location-footer .elementor-social-icon svg {
+  fill: var(--pl-white) !important;
+  width: 18px !important;
+  height: 18px !important;
+}
+.elementor-location-footer .elementor-social-icon:hover svg {
+  fill: var(--pl-navy) !important;
+}
+
+/* Footer newsletter form */
+.elementor-location-footer .elementor-field-textual {
+  background: rgba(255,255,255,0.06) !important;
+  border: 2px solid rgba(255,255,255,0.1) !important;
+  color: var(--pl-white) !important;
+  border-radius: var(--pl-radius-md) !important;
+}
+.elementor-location-footer .elementor-field-textual:focus {
+  border-color: var(--pl-gold) !important;
+  background: rgba(255,255,255,0.1) !important;
+}
+.elementor-location-footer .elementor-field-textual::placeholder {
+  color: rgba(255,255,255,0.4) !important;
+}
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.elementor-widget-testimonial-carousel .elementor-testimonial {
+  background: var(--pl-white) !important;
+  border-radius: var(--pl-radius-lg) !important;
+  padding: 32px !important;
+  box-shadow: var(--pl-shadow-md) !important;
+  border: 1px solid var(--pl-gray-100) !important;
+}
+
+/* ============================================================
+   GOOGLE MAPS
+   ============================================================ */
+.elementor-widget-google_maps iframe {
+  border-radius: var(--pl-radius-lg) !important;
+  box-shadow: var(--pl-shadow-md) !important;
+}
+
+/* ============================================================
+   ICON BOXES / ICON LISTS
+   ============================================================ */
+.elementor-widget-icon-box .elementor-icon {
+  background: var(--pl-off-white) !important;
+  border-radius: var(--pl-radius-md) !important;
+  padding: 16px !important;
+  transition: var(--pl-transition) !important;
+}
+.elementor-widget-icon-box:hover .elementor-icon {
+  background: var(--pl-gold) !important;
+  transform: scale(1.05) !important;
+}
+
+/* ============================================================
+   DIVIDERS
+   ============================================================ */
+.elementor-widget-divider .elementor-divider-separator {
+  border-color: var(--pl-gray-100) !important;
+}
+
+/* ============================================================
+   ANIMATION HELPERS (applied by JS)
+   ============================================================ */
+.pl-reveal {
+  opacity: 0 !important;
+  transform: translateY(30px) !important;
+}
+.pl-reveal.pl-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.pl-reveal-left {
+  opacity: 0 !important;
+  transform: translateX(-40px) !important;
+}
+.pl-reveal-left.pl-visible {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.pl-reveal-right {
+  opacity: 0 !important;
+  transform: translateX(40px) !important;
+}
+.pl-reveal-right.pl-visible {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.pl-scale-in {
+  opacity: 0 !important;
+  transform: scale(0.9) !important;
+}
+.pl-scale-in.pl-visible {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Stagger delay helpers */
+.pl-delay-1 { transition-delay: 0.1s !important; }
+.pl-delay-2 { transition-delay: 0.2s !important; }
+.pl-delay-3 { transition-delay: 0.3s !important; }
+.pl-delay-4 { transition-delay: 0.4s !important; }
+.pl-delay-5 { transition-delay: 0.5s !important; }
+
+/* ============================================================
+   MOBILE REFINEMENTS
+   ============================================================ */
+@media (max-width: 1024px) {
+  .site-main .e-con.e-parent {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+  .elementor-button {
+    padding: 12px 24px !important;
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .site-main .e-con.e-parent {
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+  }
+  .site-main > .page-content > .elementor > .e-con.e-parent:first-child h1.elementor-heading-title {
+    font-size: 28px !important;
+  }
+  .elementor-button {
+    padding: 12px 20px !important;
+    font-size: 13px !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+  .e-transform.e-con.e-child[data-settings*="translateY"] {
+    border-radius: var(--pl-radius-md) !important;
+    padding: 20px !important;
+  }
+  /* Mobile menu */
+  .elementor-nav-menu--dropdown:not(.elementor-nav-menu--indicator) {
+    border-radius: var(--pl-radius-md) !important;
+    box-shadow: var(--pl-shadow-lg) !important;
+  }
+}
+
+/* ============================================================
+   PREFERS REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .pl-reveal, .pl-reveal-left, .pl-reveal-right, .pl-scale-in {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
